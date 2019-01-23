@@ -43,6 +43,7 @@ public class Main extends Application {
 			Files.copy(getClass().getResourceAsStream("/assets/sensors.xml"), Paths.get(cwd+"/sensors.xml"), StandardCopyOption.REPLACE_EXISTING);
 			Files.copy(getClass().getResourceAsStream("/assets/roles.xml"), Paths.get(cwd+"/roles.xml"), StandardCopyOption.REPLACE_EXISTING);
 			Files.copy(getClass().getResourceAsStream("/assets/sensorinput.csv"), Paths.get(cwd+"/sensorinput.csv"), StandardCopyOption.REPLACE_EXISTING);
+			Files.copy(getClass().getResourceAsStream("/assets/a.bat"), Paths.get(cwd+"/a.bat"), StandardCopyOption.REPLACE_EXISTING);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
