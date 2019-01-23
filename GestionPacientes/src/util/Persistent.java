@@ -183,30 +183,6 @@ public class Persistent {
 			
 	}
 	
-	public static void saveFirstUser(User user) {
-		Users us = new Users();
-		us.getUserList().add(user);
-		
-		try {
-			 	
-				JAXBContext jaxbContext = JAXBContext.newInstance(Users.class);
-				Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-				jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-				
-				jaxbMarshaller.marshal(us, new FileOutputStream(USERDB));
-
-			      } 
-		 catch (JAXBException e) {
-				e.printStackTrace();
-			      }
-		catch (FileNotFoundException ex) {
-			ex.printStackTrace();
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-			
-	}
-	
 	public static void saveMessage(Message msg) {
 		Messages m = Persistent.getMessages();
 
@@ -231,45 +207,5 @@ public class Persistent {
 		}
 			
 	}
-
-	public static void createRoles() {
-		Roles rs = new Roles();
-		Role r1 = new Role();
-		Role r2 = new Role();
-		Role r3 = new Role();
-		
-		r1.setId(1);
-		r1.setRoleName("Paciente");
-		rs.getRoleList().add(r1);
-		
-		r2.setId(2);
-		r2.setRoleName("Sanitario");
-		rs.getRoleList().add(r2);
-		
-		r3.setId(3);
-		r3.setRoleName("Administrador");
-		rs.getRoleList().add(r3);
-		
-		try {
-			 	
-				JAXBContext jaxbContext = JAXBContext.newInstance(Roles.class);
-				Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-				jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-				
-				jaxbMarshaller.marshal(rs, new FileOutputStream(ROLEDB));
-
-			      } 
-		 catch (JAXBException e) {
-				e.printStackTrace();
-			      }
-		catch (FileNotFoundException ex) {
-			ex.printStackTrace();
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-		
-	}
-	
-	
 
 }

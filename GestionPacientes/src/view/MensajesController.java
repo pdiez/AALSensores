@@ -88,7 +88,7 @@ public class MensajesController implements Initializable {
 			if (e.getFrom().equals(to.getUsername()) && e.getTo().equals(this.user.getUsername())) {
 				addChat(">>De " + e.getFrom() + ":  " + e.getText());
 			} else if (e.getFrom().equals(this.user.getUsername()) && e.getTo().equals(to.getUsername())) {
-				addChat("<<Para " + e.getFrom() + ":  " + e.getText());
+				addChat("<<Para " + e.getTo() + ":  " + e.getText());
 			} 
 		}
 		

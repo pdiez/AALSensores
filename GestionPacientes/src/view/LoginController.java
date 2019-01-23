@@ -13,6 +13,7 @@ import de.jensd.fx.glyphs.GlyphsBuilder;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -21,6 +22,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import model.User;
 import model.Users;
@@ -48,14 +51,17 @@ public class LoginController implements Initializable {
 	public LoginController() {
 		 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(LOGINFXML));
 		 fxmlLoader.setController(this);
-	        try {
-	        	 parent = (Parent) fxmlLoader.load();
-	             scene = new Scene(parent);
-	             
-	             scene.getStylesheets().add(getClass().getResource("/assets/app.css").toExternalForm());
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
+	     try {
+	      	 parent = (Parent) fxmlLoader.load();
+	         scene = new Scene(parent);
+	          
+	         scene.getStylesheets().add(getClass().getResource("/assets/app.css").toExternalForm());
+	     } catch (IOException e) {
+	         e.printStackTrace();
+	     }
+	        
+	        
+	     
 	}
 
 	@Override
@@ -89,7 +95,24 @@ public class LoginController implements Initializable {
         		if(txtUser.validate()) btnOk.setDisable(false);
         		else btnOk.setDisable(true);
           }
-      });
+		});
+		
+		txtUser.setOnKeyPressed(new EventHandler<KeyEvent>() {
+			 @Override
+			 public void handle(KeyEvent keyEvent) {
+			     if (keyEvent.getCode() == KeyCode.ENTER)  {
+			      	txtPassword.requestFocus();
+			     }
+			 }
+		 });
+	     txtPassword.setOnKeyPressed(new EventHandler<KeyEvent>() {
+			 @Override
+			 public void handle(KeyEvent keyEvent) {
+			     if (keyEvent.getCode() == KeyCode.ENTER)  {
+			    	 if (!btnOk.isDisable()) { doLogin(); }
+			     }
+			 }
+		 });
 		
 	}
 	
@@ -104,6 +127,11 @@ public class LoginController implements Initializable {
 	
 	@FXML
     private void handleOkAction(ActionEvent event) {
+		
+		doLogin();
+	}
+
+	private void doLogin() {
 		
 		Users u = new Users();
 		u = Persistent.getUsers();
@@ -129,6 +157,7 @@ public class LoginController implements Initializable {
 			imgLogin.setImage(new Image(Main.class.getResourceAsStream("/assets/padlock2.png")));
 			lblLogin.setText("Error");
 		}
+		
 		
 	}
 		
