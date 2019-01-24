@@ -183,6 +183,35 @@ public class Persistent {
 			
 	}
 	
+	public static void delUser(User user) {
+		Users us = Persistent.getUsers();
+		User del = new User();
+		
+		for(User u : us.getUserList()) {
+			if (u.getUsername().equals(user.getUsername())) {
+				del = u;
+			}
+		}
+		us.getUserList().remove(del);
+		try {	
+				JAXBContext jaxbContext = JAXBContext.newInstance(Users.class);
+				Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+				jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+				
+				jaxbMarshaller.marshal(us, new FileOutputStream(USERDB));
+
+			      } 
+		 catch (JAXBException e) {
+				e.printStackTrace();
+			      }
+		catch (FileNotFoundException ex) {
+			ex.printStackTrace();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+			
+	}
+	
 	public static void saveMessage(Message msg) {
 		Messages m = Persistent.getMessages();
 

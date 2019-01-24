@@ -9,14 +9,6 @@
         <notes>Usuario administrador</notes>
     </user>
     <user>
-        <username>asd</username>
-        <password>asd</password>
-        <role>1</role>
-        <name>asd</name>
-        <phone>asd</phone>
-        <notes>asdaa</notes>
-    </user>
-    <user>
         <username>snt1</username>
         <password>aaa</password>
         <role>2</role>

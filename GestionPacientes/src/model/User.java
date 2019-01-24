@@ -90,5 +90,9 @@ public class User {
 	public void Guardar() {
 		Persistent.saveUser(this);
 	}
+	
+	public void Eliminar() {
+		Persistent.delUser(this);
+	}
 
 }
