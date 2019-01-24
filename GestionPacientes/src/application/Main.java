@@ -18,7 +18,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		writeXML();
-        primaryStage.setTitle("AAL");
+        primaryStage.setTitle("Control de Pacientes");
         URL url = getClass().getResource("/assets/doctor.png");
         
         primaryStage.getIcons().add(new Image(url.toExternalForm()));

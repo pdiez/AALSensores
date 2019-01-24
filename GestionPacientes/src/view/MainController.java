@@ -169,7 +169,7 @@ public class MainController implements Initializable {
 		this.stage = stage;
 		this.user = u;
 	
-        stage.setTitle("AAL");
+        stage.setTitle("Control de Pacientes");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.centerOnScreen();
